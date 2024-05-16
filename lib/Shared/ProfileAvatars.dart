@@ -1,20 +1,66 @@
 import 'package:flutter/material.dart';
+import 'package:mashura/Client/ClientChat.dart';
+import 'package:mashura/Model/avatarclass.dart';
+import 'package:mashura/daColor.dart';
 
-class ProfileAvatars extends StatefulWidget {
-  const ProfileAvatars({super.key});
+class ListofAvatars extends StatefulWidget {
+  const ListofAvatars({super.key});
 
   @override
-  State<ProfileAvatars> createState() => _ProfileAvatarsState();
+  State<ListofAvatars> createState() => _ListofAvatarsState();
 }
 
-class _ProfileAvatarsState extends State<ProfileAvatars> {
+class _ListofAvatarsState extends State<ListofAvatars> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      width: 50,
       decoration: BoxDecoration(
-          color: Colors.grey, borderRadius: BorderRadius.circular(100)),
+        color: daPrimary.withOpacity(0.2),
+      ),
+      child: ListView.builder(
+        scrollDirection:
+            Axis.horizontal, // Make the ListView scroll horizontally
+        itemCount: avatarlist.length,
+        itemBuilder: (context, index) {
+          final avatar = avatarlist[index];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    DialogRoute(
+                        context: context,
+                        builder: ((context) => Chat(data: avatar.Name))));
+              },
+              child: Container(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 70,
+                    width: 70,
+                    child: Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(avatar.Img),
+                      ),
+                      Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(100)),
+                      ),
+                    ]),
+                  ),
+                  Text(avatar.Name),
+                ],
+              )),
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -1,4 +1,7 @@
+import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
+import 'package:mashura/Model/avatarclass.dart';
+import 'package:mashura/daColor.dart';
 
 class ClientChat extends StatefulWidget {
   const ClientChat({super.key});
@@ -8,8 +11,148 @@ class ClientChat extends StatefulWidget {
 }
 
 class _ClientChatState extends State<ClientChat> {
+  List<String> time = [
+    'منذ 5د',
+    'منذ 10د',
+    'منذ 45د',
+    'منذ 1س',
+    'منذ 3س',
+    'منذ 8س',
+    'منذ 15يوم',
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                'المحادثات',
+                style: ArabicTextStyle(
+                    arabicFont: ArabicFont.elMessiri,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+            ),
+          ),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: avatarlist.length,
+                  itemBuilder: ((context, index) {
+                    final avatar = avatarlist[index];
+                    return Card(
+                      color: daThird,
+                      elevation: 3,
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              DialogRoute(
+                                  context: context,
+                                  builder: ((context) =>
+                                      Chat(data: avatar.Name))));
+                        },
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                        title: Text(
+                          avatar.Name,
+                          style: ArabicTextStyle(
+                              arabicFont: ArabicFont.elMessiri,
+                              fontSize: 20,
+                              color: daSecondary),
+                        ),
+                        leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.asset(avatar.Img)),
+                        trailing: Text(
+                          time[index],
+                          style: ArabicTextStyle(
+                              arabicFont: ArabicFont.elMessiri,
+                              fontSize: 12,
+                              color: daSecondary),
+                        ),
+                      ),
+                    );
+                  })))
+        ],
+      ),
+    );
+  }
+}
+
+class Chat extends StatefulWidget {
+  final data;
+  const Chat({super.key, required this.data});
+  @override
+  _ChatPageState createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<Chat> {
+  final List<String> _messages = [];
+  final TextEditingController _controller = TextEditingController();
+
+  void _sendMessage() {
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        _messages.add(_controller.text);
+        _controller.clear();
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.data,
+          style: ArabicTextStyle(
+              arabicFont: ArabicFont.elMessiri,
+              fontWeight: FontWeight.bold,
+              fontSize: 24),
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    _messages[index],
+                    style: ArabicTextStyle(
+                        arabicFont: ArabicFont.elMessiri, fontSize: 18),
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: 'أكتب رسالتك',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: _sendMessage,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
