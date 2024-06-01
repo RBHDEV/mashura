@@ -15,3 +15,12 @@ List<Avatar> avatarlist = [
   Avatar(id: 5, Img: 'Image/Avatars/avatar6.jpg', Name: 'هدى'),
   Avatar(id: 6, Img: 'Image/Avatars/avatar7.jpg', Name: 'يوسف'),
 ];
+
+List<Avatar> cavatarlist = [
+  Avatar(id: 0, Img: 'Image/CAvatars/cavatar1.jpg', Name: 'ريم'),
+  Avatar(id: 1, Img: 'Image/CAvatars/cavatar2.jpg', Name: 'نور'),
+  Avatar(id: 2, Img: 'Image/CAvatars/cavatar3.jpg', Name: 'علي'),
+  Avatar(id: 3, Img: 'Image/CAvatars/cavatar4.jpg', Name: 'مريم'),
+  Avatar(id: 4, Img: 'Image/CAvatars/cavatar5.jpg', Name: 'سامر'),
+  Avatar(id: 5, Img: 'Image/CAvatars/cavatar6.jpg', Name: 'سلمى'),
+];

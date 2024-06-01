@@ -1,25 +1,24 @@
 import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
-import 'package:mashura/Client/WorkerProfile.dart';
 import 'package:mashura/Model/avatarclass.dart';
 import 'package:mashura/daColor.dart';
 
-class ClientChat extends StatefulWidget {
-  const ClientChat({super.key});
+class WorkerChat extends StatefulWidget {
+  const WorkerChat({super.key});
 
   @override
-  State<ClientChat> createState() => _ClientChatState();
+  State<WorkerChat> createState() => _ClientChatState();
 }
 
-class _ClientChatState extends State<ClientChat> {
+class _ClientChatState extends State<WorkerChat> {
   List<String> time = [
-    'منذ 5د',
-    'منذ 10د',
+    'منذ 25د',
+    'منذ 30د',
     'منذ 45د',
-    'منذ 1س',
+    'منذ 1.5س',
     'منذ 3س',
     'منذ 8س',
-    'منذ 15يوم',
+    'منذ 20يوم',
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,22 +40,14 @@ class _ClientChatState extends State<ClientChat> {
           ),
           Expanded(
               child: ListView.builder(
-                  itemCount: avatarlist.length,
+                  itemCount: cavatarlist.length,
                   itemBuilder: ((context, index) {
-                    final avatar = avatarlist[index];
+                    final avatar = cavatarlist[index];
                     return Card(
                       color: daThird,
                       elevation: 3,
                       margin: EdgeInsets.all(10),
                       child: ListTile(
-                        onLongPress: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Profile(
-                                        data: avatar.id,
-                                      )));
-                        },
                         onTap: () {
                           Navigator.push(
                               context,

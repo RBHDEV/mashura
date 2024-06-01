@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mashura/Home.dart';
+import 'package:mashura/LoginPage.dart';
 
 void main() {
   runApp(const Mashura());
@@ -22,9 +23,10 @@ class Mashura extends StatelessWidget {
       supportedLocales: [
         Locale('ar'), // Arabic
       ],
-      initialRoute: '/',
+      initialRoute: '/Login',
       routes: {
         '/': (context) => Home(),
+        '/Login': (context) => LoginPage(),
       },
     );
   }

@@ -2,14 +2,14 @@ import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
 import 'package:mashura/daColor.dart';
 
-class ClientSettings extends StatefulWidget {
-  const ClientSettings({super.key});
+class WorkerSettings extends StatefulWidget {
+  const WorkerSettings({super.key});
 
   @override
-  State<ClientSettings> createState() => _ClientSettingsState();
+  State<WorkerSettings> createState() => _ClientSettingsState();
 }
 
-class _ClientSettingsState extends State<ClientSettings> {
+class _ClientSettingsState extends State<WorkerSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,25 +39,6 @@ class _ClientSettingsState extends State<ClientSettings> {
                 icon: Icon(Icons.edit),
                 label: Text(
                   'تعديل الحساب',
-                  style: ArabicTextStyle(
-                      arabicFont: ArabicFont.elMessiri, fontSize: 20),
-                )),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: daThird,
-                    foregroundColor: daSecondary,
-                    shape: LinearBorder(),
-                    fixedSize: Size(200, 50)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => contract()));
-                },
-                icon: Icon(Icons.payment),
-                label: Text(
-                  'الدفع',
                   style: ArabicTextStyle(
                       arabicFont: ArabicFont.elMessiri, fontSize: 20),
                 )),
@@ -317,74 +298,6 @@ class _contractState extends State<contract> {
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  bool _isBalanceVisible = false;
-  String _balance = '****';
-
-  TextEditingController _rip =
-      TextEditingController(text: '00799999000473251372');
-  final FocusNode _focusNode = FocusNode();
-
-  void _fill(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          contentPadding: EdgeInsets.all(20),
-          title: Text(
-            "تعبئة الرصيد",
-            style: ArabicTextStyle(
-              color: daSecondary,
-              arabicFont: ArabicFont.cairo,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: SingleChildScrollView(
-            child: IntrinsicHeight(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("من فضلك أرسل المبلغ الذي تريد تعبئته إلى هذا الحساب"),
-                  SizedBox(height: 10),
-                  TextField(
-                    controller: _rip,
-                    readOnly: true,
-                    focusNode: _focusNode,
-                    maxLines: 1,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: daSecondary)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 3, 43, 77),
-                              width: 2)),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          contentTextStyle: ArabicTextStyle(
-            arabicFont: ArabicFont.cairo,
-            color: daDark,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
-          actions: [
-            TextButton(
-              child: Text("تم"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -403,66 +316,8 @@ class _contractState extends State<contract> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 40,
-            ),
-            Center(
-              child: Image.asset(
-                "Image/balance.png",
-                scale: 4,
-              ),
-            ),
-            SizedBox(
               height: 50,
             ),
-            Column(
-              children: [
-                Text(
-                  'الرصيد الحالي:',
-                  style: ArabicTextStyle(
-                      arabicFont: ArabicFont.cairo,
-                      fontSize: 20,
-                      color: daSecondary,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  _isBalanceVisible ? '\1,000 دج' : _balance,
-                  style: TextStyle(fontSize: 24, color: Colors.blue.shade900),
-                ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _isBalanceVisible = !_isBalanceVisible;
-                      _balance = _isBalanceVisible ? '\$5,250' : '****';
-                    });
-                  },
-                  child: Text(
-                    _isBalanceVisible ? 'إخفاء الرصيد' : 'إظهار الرصيد',
-                    style: ArabicTextStyle(
-                        arabicFont: ArabicFont.cairo,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: daThird,
-                        foregroundColor: daSecondary,
-                        shape: LinearBorder(),
-                        fixedSize: Size(200, 100)),
-                    onPressed: () => _fill(context),
-                    icon: Icon(Icons.payment),
-                    label: Text(
-                      'تعبئة الرصيد',
-                      style: ArabicTextStyle(
-                          arabicFont: ArabicFont.elMessiri, fontSize: 20),
-                    )),
-              ],
-            ),
-            SizedBox(height: 30),
           ],
         ),
       ),
@@ -491,51 +346,19 @@ class _specialorderState extends State<specialorder> {
   }
 
   TextEditingController _messageController = TextEditingController();
-
-  List<String> kotobcover = [
-    'Image/kotob/1.jpg',
-    'Image/kotob/2.jpg',
-    'Image/kotob/3.jpeg',
-    'Image/kotob/4.jpeg',
-    'Image/kotob/5.jpg',
-    'Image/kotob/6.jpeg',
-    'Image/kotob/7.jpeg',
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text('المكتبة'),
-          backgroundColor: daSecondary,
-          foregroundColor: daPrimary,
-          titleTextStyle: ArabicTextStyle(
-              arabicFont: ArabicFont.avenirArabic,
-              fontSize: 20,
-              fontWeight: FontWeight.bold),
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
-                ),
-                itemCount: kotobcover.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: Card(
-                      elevation: 2,
-                      child: GridTile(
-                        child: Image.asset(
-                          kotobcover[index],
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  );
-                })));
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('المكتبة'),
+        backgroundColor: daSecondary,
+        foregroundColor: daPrimary,
+        titleTextStyle: ArabicTextStyle(
+            arabicFont: ArabicFont.avenirArabic,
+            fontSize: 20,
+            fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }

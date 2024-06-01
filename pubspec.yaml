@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.2.1
   google_nav_bar: ^5.0.6
   http: ^1.2.1
+  table_calendar: ^3.1.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
@@ -63,6 +64,8 @@ flutter:
   assets:
     - Image/
     - Image/Avatars/
+    - Image/CAvatars/
+    - Image/kotob/
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages

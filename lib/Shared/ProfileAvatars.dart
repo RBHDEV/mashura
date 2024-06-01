@@ -38,12 +38,19 @@ class _ListofAvatarsState extends State<ListofAvatars> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: 70,
-                    width: 70,
+                    width: 60,
                     child: Stack(children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset(avatar.Img),
+                      Container(
+                        width: 60,
+                        height: 60,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            avatar.Img,
+                            fit: BoxFit.cover,
+                            alignment: Alignment(0, -0.5),
+                          ),
+                        ),
                       ),
                       Container(
                         height: 10,
