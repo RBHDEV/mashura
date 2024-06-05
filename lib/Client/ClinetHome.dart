@@ -527,11 +527,11 @@ class _idaraState extends State<idara> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WorkerProfile(
-                                      data: 'تقديم طعون',
+                                      data: 'كتابة عرائض',
                                     )));
                       },
                       child: Stack(alignment: Alignment(0, 0), children: [
-                        Text('تقديم طعون'),
+                        Text('كتابة عرائض'),
                       ])),
                 ],
               ),
@@ -571,7 +571,7 @@ class _idaraState extends State<idara> {
               ),
               Center(
                 child: Text(
-                  'إستخراج الوثائق',
+                  'الوثائق اللازمة',
                   style: ArabicTextStyle(
                       color: daSecondary,
                       arabicFont: ArabicFont.cairo,
@@ -602,11 +602,11 @@ class _idaraState extends State<idara> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WorkerProfile(
-                                      data: 'تقديم شكاوى',
+                                      data: 'حماية الملكية الفكرية',
                                     )));
                       },
                       child: Stack(alignment: Alignment(0, 0), children: [
-                        Text('تقديم شكاوى'),
+                        Text('حماية الملكية الفكرية'),
                       ])),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -624,11 +624,11 @@ class _idaraState extends State<idara> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WorkerProfile(
-                                      data: 'تقديم طعون',
+                                      data: 'انشاء مؤسسة ناشئة',
                                     )));
                       },
                       child: Stack(alignment: Alignment(0, 0), children: [
-                        Text('تقديم طعون'),
+                        Text('انشاء مؤسسة ناشئة'),
                       ])),
                 ],
               ),
@@ -655,11 +655,11 @@ class _idaraState extends State<idara> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WorkerProfile(
-                                      data: 'تقديم طعون',
+                                      data: 'عقود الملكية',
                                     )));
                       },
                       child: Stack(alignment: Alignment(0, 0), children: [
-                        Text('تقديم طعون'),
+                        Text('عقود الملكية'),
                       ])),
                 ],
               ),
