@@ -346,19 +346,51 @@ class _specialorderState extends State<specialorder> {
   }
 
   TextEditingController _messageController = TextEditingController();
+
+  List<String> kotobcover = [
+    'Image/kotob/1.jpg',
+    'Image/kotob/2.jpg',
+    'Image/kotob/3.jpeg',
+    'Image/kotob/4.jpeg',
+    'Image/kotob/5.jpg',
+    'Image/kotob/6.jpeg',
+    'Image/kotob/7.jpeg',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('المكتبة'),
-        backgroundColor: daSecondary,
-        foregroundColor: daPrimary,
-        titleTextStyle: ArabicTextStyle(
-            arabicFont: ArabicFont.avenirArabic,
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
-      ),
-    );
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('المكتبة'),
+          backgroundColor: daSecondary,
+          foregroundColor: daPrimary,
+          titleTextStyle: ArabicTextStyle(
+              arabicFont: ArabicFont.avenirArabic,
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                ),
+                itemCount: kotobcover.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: Card(
+                      elevation: 2,
+                      child: GridTile(
+                        child: Image.asset(
+                          kotobcover[index],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  );
+                })));
   }
 }
